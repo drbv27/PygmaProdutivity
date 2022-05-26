@@ -22,7 +22,6 @@ export const LoginTitle = styled.h1`
     padding: 0 0 20px;
     text-align: center;
     font-size: 1.5rem;
-    color:red;
 `
 
 export const LoginLabel = styled.label`
@@ -32,7 +31,44 @@ export const LoginLabel = styled.label`
   display: block;
 `
 
-export const LoginInput = styled.input`
-      width: 100%;
-  margin-bottom: 20px;
+export const LoginInputTP = styled.input`
+    width: 100%;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
 `
+
+export const ImageWrap = styled.div`
+      width: 120px;
+  height: 100px;
+
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+`
+
+export const LoginSubmit = styled.input`
+  width: 100%;
+  margin-bottom: 20px;
+      border: none;
+  outline: none;
+  height: 40px;
+  background-color: rgb(75, 77, 83);
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-bottom: 50px;
+`
+
+export const LoginA = styled.a`
+      text-decoration: none;
+  font-size: 15px;
+  line-height: 20px;
+  color: darkgrey;
+` 
