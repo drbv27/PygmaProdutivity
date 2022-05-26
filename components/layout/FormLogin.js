@@ -1,5 +1,14 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
+import ImgSrc from '../../public/img/fondo.jpg'
+
+export const LoginBody = styled.div`
+     background-image: url(${ImgSrc}) /* no-repeat center top */;
+     background-image: url(${require(`../../public/img/fondo.jpg`)});
+  background-size: cover;
+  font-family: sans-serif;
+  height: 100vh;
+`
 
 export const LoginBox = styled.div`
 width: 320px;
@@ -64,6 +73,9 @@ export const LoginSubmit = styled.input`
   border-radius: 20px;
   cursor: pointer;
   margin-bottom: 50px;
+  &:hover{
+    background-color: #98bf11;
+  }
 `
 
 export const LoginA = styled.a`
@@ -71,4 +83,7 @@ export const LoginA = styled.a`
   font-size: 15px;
   line-height: 20px;
   color: darkgrey;
+  &:hover{
+    color: #fff;
+  }
 ` 

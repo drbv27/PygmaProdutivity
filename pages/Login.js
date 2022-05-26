@@ -3,12 +3,21 @@ import Image from 'next/image'
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import Robocabe from '../public/img/robotcabe.png'
-import { LoginBox,LoginTitle,LoginLabel,LoginInputTP,ImageWrap, LoginSubmit,LoginA } from '../components/layout/FormLogin';
-
+import { LoginBox,LoginTitle,LoginLabel,LoginInputTP,ImageWrap, LoginSubmit,LoginA,LoginBody } from '../components/layout/FormLogin';
+import ImgSrc from '../public/img/fondo.jpg'
 
 const Login = () => {
   return (
-    <>
+      <>
+        <LoginBody>
+            <Image
+                alt="background"
+                src={ImgSrc}
+                layout="fill"
+                objectFit='cover'
+                quality={100}
+                />
+        </LoginBody>
         <LoginBox>
         <ImageWrap>
             <Image 
@@ -30,7 +39,7 @@ const Login = () => {
             <LoginA href="#">Olvido su contraseña</LoginA>
         </form>
   </LoginBox>
-    </>
+  </>
   )
 }
 
