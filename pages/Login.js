@@ -6,14 +6,28 @@ import Robocabe from '../public/img/robotcabe.png'
 import { LoginBox,LoginTitle,LoginLabel,LoginInputTP,ImageWrap, LoginSubmit,LoginA,LoginBody,LoginChange } from '../components/layout/FormLogin';
 import ImgSrc from '../public/img/fondo.jpg'
 
+import firebaseApp from '../credenciales';
+import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword} from "firebase/auth"
+const auth = getAuth(firebaseApp);
+
 const Login = () => {
 
     const [estaRegistrandose,setEstaRegistrandose]= useState(false);
 
+    async function submitHandler(e) {
+        e.preventDefault();
+        const correo = e.target.userName.value;
+        const contra = e.target.password.value;
+        if(estaRegistrandose){
+            const usuario = await createUserWithEmailAndPassword(auth,correo,contra);
+        }else{
+            signInWithEmailAndPassword(auth,correo,contra)
+        }
+    }
+
   return (
       <>
         <LoginBody>
-            <h1>{estaRegistrandose ? "Registrate" : "Inicia Sesión"}</h1>
             <Image
                 alt="background"
                 src={ImgSrc}
@@ -31,12 +45,12 @@ const Login = () => {
             />
         </ImageWrap>
         <LoginTitle>Pygmalion</LoginTitle>
-        <form>
+        <form onSubmit={submitHandler}>
             <LoginLabel htmlFor="usuario">Usuario</LoginLabel>
-            <LoginInputTP type="text" placeholder="ingrese usuario"/>
+            <LoginInputTP type="text" placeholder="ingrese usuario" id="userName"/>
 
             <LoginLabel htmlFor="contraseña">Contraseña</LoginLabel>
-            <LoginInputTP type="password" placeholder="ingrese Contraseña"/>
+            <LoginInputTP type="password" placeholder="ingrese Contraseña"id="password"/>
 
             <LoginSubmit type="submit" >
             {estaRegistrandose ? "Sign In" : "Login"}

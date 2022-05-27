@@ -74,7 +74,7 @@ export const LoginSubmit = styled.button`
   cursor: pointer;
   margin-bottom: 50px;
   &:hover{
-    background-color: #98bf11;
+    background-color: #1097d5;
   }
 `
 export const LoginChange = styled.button`
