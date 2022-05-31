@@ -15,7 +15,7 @@ import {
 
 const AgregarTarea = () => {
   return (
-    <div>
+    <>
       <InicioTitle>Registrar Actividad</InicioTitle>
       <ContGen>
         <ContTime>
@@ -51,9 +51,9 @@ const AgregarTarea = () => {
       </SectProces>
       <ContProcesT>
         <TitleSub>Actividad realizada</TitleSub>
-        <TextArea cols="100" rows="5"></TextArea>
+        <TextArea cols="90" rows="5"></TextArea>
       </ContProcesT>
-    </div>
+    </>
   );
 };
 

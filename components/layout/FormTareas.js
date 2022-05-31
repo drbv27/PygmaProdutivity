@@ -32,7 +32,7 @@ export const Inputinicio = styled.input`
 `;
 export const SectProces = styled.div`
   display: flex;
-  gap: 60px;
+  gap: 30px;
 
   justify-content: center;
   width: 100%;

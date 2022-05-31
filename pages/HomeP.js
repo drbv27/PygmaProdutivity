@@ -8,10 +8,12 @@ import Layout from "../components/layout/Layout";
 const HomeP = ({ correoUsuario }) => {
   return (
     <>
-      <Layout correoUsuario={correoUsuario}/>
+      <Layout correoUsuario={correoUsuario}>
+        <AgregarTarea />
+        <ListadoTareas />
+      </Layout>
 
-      <AgregarTarea />
-      <ListadoTareas />
+
     </>
   );
 };

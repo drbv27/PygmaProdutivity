@@ -9,32 +9,44 @@ const Contenedor = styled.div`
   position: fixed;
   width: 15vw;
   height: 100%;
+  color:white;
+  font-weight:bold;
 `;
+
+const ListaN = styled.ul`
+  margin-left:5px;
+`;
+
+const ItemNav = styled.li`
+  display:flex;
+`;
+
+
+
+
 
 const Navbar = () => {
   return (
     <>
       <Contenedor>
-        <h2 className="titu">Barra ateral</h2>
-        <div>
-          <ul>
-            <li>
+        <h2 className="titu">Barra Lateral</h2>
+          <ListaN>
+            <ItemNav>
               <FontAwesomeIcon icon={faHouse} />
               <Link href="/">
                 <a>Home</a>
               </Link>
-            </li>
-            <li>
+            </ItemNav>
+            <ItemNav>
               <FontAwesomeIcon icon={faChartArea} />
               <Link href="/dash">
                 <a>Dashboard</a>
               </Link>
-            </li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
+            </ItemNav>
+            <ItemNav>1</ItemNav>
+            <ItemNav>2</ItemNav>
+            <ItemNav>3</ItemNav>
+          </ListaN>
       </Contenedor>
     </>
   );
