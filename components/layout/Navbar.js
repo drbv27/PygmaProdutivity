@@ -14,10 +14,12 @@ const Contenedor = styled.div`
 `;
 
 const ListaN = styled.ul`
-  margin-left:5px;
+  margin:5rem 0 0 5px;
+  
 `;
 
 const ItemNav = styled.li`
+  margin:1rem 0 1rem 0;
   display:flex;
 `;
 
