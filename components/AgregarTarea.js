@@ -30,10 +30,10 @@ const AgregarTarea = () => {
           <InputTitle>Hora Final</InputTitle>
           <Inputinicio type="time" />
         </ContTime>
-        <ContTime>
+{/*         <ContTime>
           <InputTitle>Total horas</InputTitle>
           <Inputinicio type="time" />
-        </ContTime>
+        </ContTime> */}
       </ContGen>
       <SectProces>
         <ContProces>
