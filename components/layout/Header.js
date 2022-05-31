@@ -1,5 +1,10 @@
 import React from "react";
+import firebaseApp from "../../credenciales";
+import { getAuth, signOut } from "firebase/auth";
 import styled from "@emotion/styled";
+
+const auth = getAuth(firebaseApp);
+
 
 const Cabecera = styled.div`
   margin-left: 15vw;
@@ -11,10 +16,14 @@ const Cabecera = styled.div`
   align-items: center;
 `;
 
-const Header = (props) => {
+const Header = ({correoUsuario}) => {
+  console.log(correoUsuario)
   return (
     <>
-      <Cabecera>{props.children}</Cabecera>
+      <Cabecera>
+        <h4>{`Hola: ${correoUsuario}`}</h4>
+        <button onClick={() => signOut(auth)}>Cerrar Sesión</button>
+      </Cabecera>
     </>
   );
 };

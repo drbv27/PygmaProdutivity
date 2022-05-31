@@ -3,19 +3,12 @@ import firebaseApp from "../credenciales";
 import { getAuth, signOut } from "firebase/auth";
 import AgregarTarea from "../components/AgregarTarea";
 import ListadoTareas from "../components/ListadoTareas";
-import Navbar from "../components/layout/Navbar";
-import Header from "../components/layout/Header";
-
-const auth = getAuth(firebaseApp);
+import Layout from "../components/layout/Layout";
 
 const HomeP = ({ correoUsuario }) => {
   return (
     <>
-      <Navbar />
-      <Header>
-        <h4>{`Hola ${correoUsuario} sesión iniciada`}</h4>
-        <button onClick={() => signOut(auth)}>Cerrar Sesión</button>
-      </Header>
+      <Layout correoUsuario={correoUsuario}/>
 
       <AgregarTarea />
       <ListadoTareas />
