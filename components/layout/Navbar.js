@@ -21,6 +21,10 @@ const ItemNav = styled.li`
   display:flex;
 `;
 
+const Enlace = styled.a`
+  margin-left:15px;
+`
+
 
 
 
@@ -34,13 +38,13 @@ const Navbar = () => {
             <ItemNav>
               <FontAwesomeIcon icon={faHouse} />
               <Link href="/">
-                <a>Home</a>
+                <Enlace>Home</Enlace>
               </Link>
             </ItemNav>
             <ItemNav>
               <FontAwesomeIcon icon={faChartArea} />
               <Link href="/dash">
-                <a>Dashboard</a>
+                <Enlace>Dashboard</Enlace>
               </Link>
             </ItemNav>
             <ItemNav>1</ItemNav>
