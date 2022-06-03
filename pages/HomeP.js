@@ -45,7 +45,7 @@ fetchTareas();
   return (
     <>
       <Layout correoUsuario={correoUsuario}>
-        <AgregarTarea />
+        <AgregarTarea arrayTareas={arrayTareas} correoUsuario={correoUsuario} setArrayTareas={setArrayTareas}/>
         {
           arrayTareas ?
           <ListadoTareas arrayTareas={arrayTareas} correoUsuario={correoUsuario} setArrayTareas={setArrayTareas}/>
