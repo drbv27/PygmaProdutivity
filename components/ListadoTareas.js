@@ -1,9 +1,25 @@
 import React from "react";
 
-const ListadoTareas = () => {
+import firebaseApp from "../credenciales";
+import { getFirestore,updateDoc,doc } from "firebase/firestore";
+
+const firestore = getFirestore(firebaseApp);
+
+const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
+
+  async function eliminarTarea(idTareaAEliminar){
+    //crear nuevo array de tareas
+    const nuevoArrayTareas = arrayTareas.filter((objetoTarea)=>objetoTarea.id !== idTareaAEliminar);
+    //actualizar base de datos
+    const docuRef = doc(firestore,`usuarios/${correoUsuario}`);
+    updateDoc(docuRef,{tareas:[...nuevoArrayTareas]});
+    //actualizar state
+    setArrayTareas(nuevoArrayTareas);
+  }
+
   return (
     <div>
-      {/*   <h1>Actividades</h1>
+      <h1>Actividades</h1>
       <table>
         <tr>
           <th>Dia</th>
@@ -14,40 +30,27 @@ const ListadoTareas = () => {
           <th>Duración</th>
           <th>Total</th>
         </tr>
-        <tr>
-          <td>Lunes</td>
-          <td>7:00 a.m.</td>
-          <td>8:00 a.m.</td>
-          <td>Gerencia/Gobierno/Asamblea General</td>
-          <td>Reunión con Socios</td>
-          <td>1:00:00</td>
-          <td rowSpan={2}>2:00:00</td>
-        </tr>
-        <tr>
-          <td>Lunes</td>
-          <td>8:00 a.m.</td>
-          <td>9:00 a.m.</td>
-          <td>Ingeniería/Compras/Solicitud de Compras</td>
-          <td>Compra en Alibaba dbolos</td>
-          <td>1:00:00</td>
-        </tr>
-        <tr>
-          <td>Lunes</td>
-          <td>9:00 a.m.</td>
-          <td>9:30 a.m.</td>
-          <td>Ingeniería/Fabricación/Inventario</td>
-          <td>Empaque Innobots</td>
-          <td>0:30:00</td>
-        </tr>
-        <tr>
-          <td>Lunes</td>
-          <td>9:30 a.m.</td>
-          <td>10:15 a.m.</td>
-          <td>Soporte/Manejo de equipos/Instalación de Software</td>
-          <td>Office</td>
-          <td>0:45:00</td>
-        </tr>
-      </table> */}
+        
+        {arrayTareas.map((objetoTarea)=>{
+          return(
+            <tr>
+            <td>{objetoTarea.fecha}</td>
+            <td>{objetoTarea.inicio}</td>
+            <td>{objetoTarea.final}</td>
+            <td>{objetoTarea.subproceso}</td>
+            <td>{objetoTarea.proceso}</td>
+            <td>{objetoTarea.macroproceso}</td>
+            <td>{objetoTarea.actividad}</td>
+            <td>{objetoTarea.tiempo}</td>
+            <td><button>Editar</button></td>
+            <td><button onClick={()=>eliminarTarea(objetoTarea.id)}>Eliminar</button></td>
+            
+          </tr>
+          
+          )
+        })}
+        
+      </table>
     </div>
   );
 };
