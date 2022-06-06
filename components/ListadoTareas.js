@@ -17,6 +17,23 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
     setArrayTareas(nuevoArrayTareas);
   }
 
+  const calculoTiempo = (tfinal,tinicial)=>{
+    
+   let minInicio = tinicial.split(':').reduce((p,c)=>parseInt(p)*60+parseInt(c));
+  let minFinal = tfinal.split(':').reduce((p,c)=>parseInt(p)*60+parseInt(c));
+    let diferencia = minFinal-minInicio;
+  
+    let horas = Math.floor(diferencia/60);
+    let minutos = diferencia%60;
+    if (minutos<10){
+      minutos = `0${minutos}`
+    }
+    return (`${horas}:${minutos}`)
+
+
+  }
+
+
   return (
     <div>
       <h1>Actividades</h1>
@@ -25,10 +42,12 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
           <th>Dia</th>
           <th>Inicio</th>
           <th>Fin</th>
-          <th>Asunto</th>
+          <th>Subproceso</th>
+          <th>proceso</th>
+          <th>macroproceso</th>
           <th>Actividad</th>
           <th>Duración</th>
-          <th>Total</th>
+
         </tr>
         
         {arrayTareas.map((objetoTarea)=>{
@@ -41,7 +60,8 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
             <td>{objetoTarea.proceso}</td>
             <td>{objetoTarea.macroproceso}</td>
             <td>{objetoTarea.actividad}</td>
-            <td>{objetoTarea.tiempo}</td>
+
+            <td>{calculoTiempo(objetoTarea.final,objetoTarea.inicio)}</td>
             <td><button>Editar</button></td>
             <td><button onClick={()=>eliminarTarea(objetoTarea.id)}>Eliminar</button></td>
             

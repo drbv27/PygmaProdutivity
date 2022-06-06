@@ -27,7 +27,6 @@ const AgregarTarea = ({correoUsuario,setArrayTareas,arrayTareas}) => {
     const proceso = e.target.formProceso.value;
     const macroproceso = e.target.formMacroproceso.value;
     const actividad = e.target.formActividad.value;
-    const tiempo = e.target.formTiempo.value;
     //crear nuevo array de tareas
     const nuevoArrayTareas = 
     [...arrayTareas,
@@ -39,13 +38,20 @@ const AgregarTarea = ({correoUsuario,setArrayTareas,arrayTareas}) => {
         proceso:proceso,
         macroproceso:macroproceso,
         actividad:actividad,
-        tiempo:tiempo}]
+      }]
     //actualizar DB
     const docuRef = doc(firestore,`usuarios/${correoUsuario}`);
     updateDoc(docuRef,{tareas:[...nuevoArrayTareas]});
     //actualizar state
     setArrayTareas(nuevoArrayTareas);
-
+    //Limpiar formulario
+    e.target.formFecha.value="";
+    e.target.formInicio.value="";
+    e.target.formFinal.value="";
+    e.target.formSubproceso.value="";
+    e.target.formProceso.value="";
+    e.target.formMacroproceso.value="";
+    e.target.formActividad.value="";
   }
 
   return (
@@ -58,7 +64,6 @@ const AgregarTarea = ({correoUsuario,setArrayTareas,arrayTareas}) => {
         <input type="text"placeholder="subproceso" id="formSubproceso"/>
         <input type="text" placeholder="proceso" id="formProceso"/>
         <input type="text" placeholder="macroproceso" id="formMacroproceso"/>
-        <input type="time" id="formTiempo"/>
         <textarea placeholder="actividad" id="formActividad"/>
         <input type="submit"/>
       </form>
