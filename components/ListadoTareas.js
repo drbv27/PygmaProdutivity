@@ -22,7 +22,7 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
    let minInicio = tinicial.split(':').reduce((p,c)=>parseInt(p)*60+parseInt(c));
   let minFinal = tfinal.split(':').reduce((p,c)=>parseInt(p)*60+parseInt(c));
     let diferencia = minFinal-minInicio;
-  
+    let acumulado = diferencia+diferencia
     let horas = Math.floor(diferencia/60);
     let minutos = diferencia%60;
     if (minutos<10){
@@ -31,6 +31,12 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
     return (`${horas}:${minutos}`)
 
 
+  }
+
+  const calcTotal = (arrayT) =>{
+    const sum = arrayTareas.reduce((prev,curr,index,array)=>prev+curr.total,0)
+    console.log(sum)
+    return (`${sum}`)
   }
 
 
@@ -49,9 +55,9 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
           <th>Duración</th>
 
         </tr>
-        
         {arrayTareas.map((objetoTarea)=>{
           return(
+            
             <tr>
             <td>{objetoTarea.fecha}</td>
             <td>{objetoTarea.inicio}</td>
@@ -62,14 +68,24 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
             <td>{objetoTarea.actividad}</td>
 
             <td>{calculoTiempo(objetoTarea.final,objetoTarea.inicio)}</td>
+            <td>{}</td>
             <td><button>Editar</button></td>
             <td><button onClick={()=>eliminarTarea(objetoTarea.id)}>Eliminar</button></td>
-            
-          </tr>
+            </tr>
+          
           
           )
         })}
-        
+        <tr>
+        <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>total</th>
+           <th>{calcTotal(arrayTareas)}</th> 
+        </tr>
       </table>
     </div>
   );

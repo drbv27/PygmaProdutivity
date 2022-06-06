@@ -27,6 +27,7 @@ const AgregarTarea = ({correoUsuario,setArrayTareas,arrayTareas}) => {
     const proceso = e.target.formProceso.value;
     const macroproceso = e.target.formMacroproceso.value;
     const actividad = e.target.formActividad.value;
+    const total = (final.split(':').reduce((p,c)=>parseInt(p)*60+parseInt(c)))-(inicio.split(':').reduce((p,c)=>parseInt(p)*60+parseInt(c)))
     //crear nuevo array de tareas
     const nuevoArrayTareas = 
     [...arrayTareas,
@@ -38,6 +39,7 @@ const AgregarTarea = ({correoUsuario,setArrayTareas,arrayTareas}) => {
         proceso:proceso,
         macroproceso:macroproceso,
         actividad:actividad,
+        total:total,
       }]
     //actualizar DB
     const docuRef = doc(firestore,`usuarios/${correoUsuario}`);
