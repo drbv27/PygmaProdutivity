@@ -22,7 +22,6 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
    let minInicio = tinicial.split(':').reduce((p,c)=>parseInt(p)*60+parseInt(c));
   let minFinal = tfinal.split(':').reduce((p,c)=>parseInt(p)*60+parseInt(c));
     let diferencia = minFinal-minInicio;
-    let acumulado = diferencia+diferencia
     let horas = Math.floor(diferencia/60);
     let minutos = diferencia%60;
     if (minutos<10){
@@ -35,8 +34,19 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
 
   const calcTotal = (arrayT) =>{
     const sum = arrayTareas.reduce((prev,curr,index,array)=>prev+curr.total,0)
-    console.log(sum)
+    /* console.log(sum) */
     return (`${sum}`)
+  }
+
+  const filtro = ()=>{
+    const gerencia = arrayTareas.filter((act)=>{
+      return(
+        act.macroproceso==="Gerencia"
+      )
+    })
+    console.log(gerencia)
+    const totGer = gerencia.reduce((prev,curr,index,array)=>prev+curr.total,0)
+    console.log(totGer) 
   }
 
 
@@ -85,6 +95,16 @@ const ListadoTareas = ({arrayTareas,correoUsuario,setArrayTareas}) => {
           <th></th>
           <th>total</th>
            <th>{calcTotal(arrayTareas)}</th> 
+        </tr>
+        <tr>
+        <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>total</th>
+           <th>{filtro()}</th> 
         </tr>
       </table>
     </div>

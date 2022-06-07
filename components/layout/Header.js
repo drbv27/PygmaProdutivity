@@ -34,7 +34,7 @@ const BotonC = styled.button`
 `
 
 const Header = ({correoUsuario}) => {
-  console.log(correoUsuario)
+  /* console.log(correoUsuario) */
   return (
     <>
       <Cabecera>

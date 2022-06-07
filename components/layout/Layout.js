@@ -8,7 +8,7 @@ const PrincipalC = styled.div`
 `
 
 const Layout = ({correoUsuario,...props}) => {
-  console.log(props)
+  /* console.log(props) */
   return (
     <>
       <Navbar />

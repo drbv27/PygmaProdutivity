@@ -25,6 +25,7 @@ const ItemNav = styled.li`
 
 const Enlace = styled.a`
   margin-left:15px;
+  cursor:pointer;
 `
 
 
@@ -44,7 +45,9 @@ const Navbar = () => {
               </Link>
             </ItemNav>
             <ItemNav>
+              <Link href="/dash">
               <FontAwesomeIcon icon={faChartArea} />
+              </Link>
               <Link href="/dash">
                 <Enlace>Dashboard</Enlace>
               </Link>
